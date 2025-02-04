@@ -13,8 +13,9 @@ const ToDoSchema = new mongoose.Schema({
         trim: true
     },
     completed: {
-        type: Boolean,
-        default: false,
+        type: String, 
+        enum: ["todo", "active", "done"], // Lista med tillåtna värden
+        default: "todo",
         required: true
     },
     created: {
