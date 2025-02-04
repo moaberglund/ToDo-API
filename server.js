@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 
 // Import routes
+const ToDoRoutes = require("./api/routes/todo");
 
 
 // Initialize express
@@ -22,6 +23,7 @@ app.listen(port, () => {
 });
 
 // Routes
+app.use("/api/todo", ToDoRoutes);
 
 
 // Connect to Database - Atlas MongoDB
