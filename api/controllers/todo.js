@@ -34,6 +34,25 @@ const getToDos = async (req, res) => {
 
 
 // Update
+const updateToDo = async (req, res) => {
+    try {
+        // Get the id from the URL
+        const {id} = req.params;
+        const todo = await ToDoSchema.findByIdAndUpdate(id, req.body);
 
+        // If not found
+        if (!todo) {
+            return res.status(404).json({message: "Could not find selected object."});
+        }
+
+        // Get the updated object
+        const updatedToDo = await ToDoSchema.findById(id);
+        // Return the updated object
+        res.status(200).json(updatedToDo);
+
+    } catch (error) {
+        res.status(500).json({error: error.message + "Server error."});
+    }
+}
 
 // Delete
