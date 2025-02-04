@@ -23,14 +23,14 @@ const createToDo = async (req, res) => {
 };
 
 // Read
-const getToDos = async (req, res) => {
+const readToDos = async (req, res) => {
     try {
         let result = await ToDoSchema.find({}); 
         return res.json(result);
     } catch (error) {
         return res.status(500).json({error: error.message + "Server error."});
     }
-}
+};
 
 
 // Update
@@ -53,7 +53,7 @@ const updateToDo = async (req, res) => {
     } catch (error) {
         res.status(500).json({error: error.message + "Server error."});
     }
-}
+};
 
 // Delete
 const deleteToDo = async (req,res) => {
@@ -72,3 +72,10 @@ const deleteToDo = async (req,res) => {
         res.status(500).json({error: error.message + "Server error."});
     }
 };
+
+module.exports = {
+    createToDo,
+    readToDos,
+    updateToDo,
+    deleteToDo
+}
