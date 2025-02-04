@@ -23,6 +23,14 @@ const createToDo = async (req, res) => {
 };
 
 // Read
+const getToDos = async (req, res) => {
+    try {
+        let result = await ToDoSchema.find({}); 
+        return res.json(result);
+    } catch (error) {
+        return res.status(500).json({error: error.message + "Server error."});
+    }
+}
 
 
 // Update
